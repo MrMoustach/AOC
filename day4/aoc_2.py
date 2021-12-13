@@ -53,18 +53,20 @@ for i in range(0, len(splitBoards), 5):
 #sim
 j = 0
 i = 0
+boardsWon = []
 for i in range(len(numbers)):
 	j = 0
 	finish = False
 	for board in boards:
 		# printBoard(board)
-		if (isBoardWon(board, numbers[:i+1])):
+		if (isBoardWon(board, numbers[:i+1]) and j not in boardsWon):
 			print("board won : " + str(j))
 			printBoard(board)
-			finish = True
+			boardsWon.append(j)
+		if (len(boardsWon) == len(boards)):
 			break
 		j += 1
-	if (finish):
+	if (len(boardsWon) == len(boards)):
 		break
 sum = 0
 for row in boards[j]:
